@@ -52,33 +52,51 @@ typedef enum { MXC_LP_V0_9 = 0, MXC_LP_V1_0, MXC_LP_V1_1 } mxc_lp_ovr_t;
 /**
  * @brief      Places the device into SLEEP mode.  This function returns once an RTC or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterSleepMode(void);
 
 /**
  * @brief      Places the device into Low Power mode.  This function returns once an RTC or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterLowPowerMode(void);
 
 /**
  * @brief      Places the device into Micro Power mode.  This function returns once an RTC or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterMicroPowerMode(void);
 
 /**
  * @brief      Places the device into Standby mode.  This function returns once an RTC or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterStandbyMode(void);
 
 /**
  * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterBackupMode(void);
 
 /**
  * @brief      Places the device into Shutdown mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur.
  */
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
+#endif
 void MXC_LP_EnterPowerDownMode(void);
 
 /**
@@ -107,16 +125,16 @@ int MXC_LP_RetentionRegIsEnabled(void);
 
 /**
  * @brief      Enables data retention to RAM blocks 0-4 in BACKUP mode.
- * 
- * @param[in]  mask  The mask of the RAM blocks to enable data retention. Bit 0 enables 
+ *
+ * @param[in]  mask  The mask of the RAM blocks to enable data retention. Bit 0 enables
  *                   block 0, bit 1 enables block 1, etc.
  */
 void MXC_LP_EnableSramRetention(uint32_t mask);
 
 /**
  * @brief      Disables data retention to RAM blocks 0-4 in BACKUP mode.
- * 
- * @param[in]  mask  The mask of the RAM blocks to disable data retention. Bit 0 disables 
+ *
+ * @param[in]  mask  The mask of the RAM blocks to disable data retention. Bit 0 disables
  *                   block 0, bit 1 disables block 1, etc.
  */
 void MXC_LP_DisableSramRetention(uint32_t mask);
@@ -172,15 +190,15 @@ void MXC_LP_EnableRTCAlarmWakeup(void);
 void MXC_LP_DisableRTCAlarmWakeup(void);
 
 /**
- * @brief      Enables Timer to wakeup from any low power mode. 
- * 
+ * @brief      Enables Timer to wakeup from any low power mode.
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_EnableTimerWakeup(mxc_tmr_regs_t *tmr);
 
 /**
- * @brief      Disables Timer from waking up device.  
- * 
+ * @brief      Disables Timer from waking up device.
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_DisableTimerWakeup(mxc_tmr_regs_t *tmr);
@@ -198,7 +216,7 @@ void MXC_LP_DisableWUTAlarmWakeup(void);
 /**
  * @brief      Configure which clocks are powered down at deep sleep and which are not affected.
  *
- * @note       Need to configure all clocks at once any clock not passed in the mask will be 
+ * @note       Need to configure all clocks at once any clock not passed in the mask will be
  *             unaffected by Deepsleep.
  *
  * @param[in]  mask         The mask of the clocks to power down when part goes into deepsleep.

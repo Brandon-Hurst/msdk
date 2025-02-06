@@ -5,7 +5,7 @@
 
 /******************************************************************************
  *
- * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by 
+ * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by
  * Analog Devices, Inc.),
  * Copyright (C) 2023-2024 Analog Devices, Inc.
  *
@@ -307,21 +307,21 @@ void MXC_LP_DisableSysRAM1LightSleep(void);
 void MXC_LP_DisableSysRAM0LightSleep(void);
 
 /**
- * @brief      Enables the selected USB event to wake up the device from any low power mode.  
+ * @brief      Enables the selected USB event to wake up the device from any low power mode.
  *             Call this function multiple times to enable multiple events.
  * @param      wu_evt       Which event to use as a wakeup source.
  */
 void MXC_LP_EnableUSBWakeup(mxc_lp_usb_event_t wu_evt);
 
 /**
- * @brief      Disables the selected USB event from waking up the device.  
+ * @brief      Disables the selected USB event from waking up the device.
  *             Call this function multiple times to disable multiple events.
  * @param      wu_evt       Which event to disable as a wakeup source.
  */
 void MXC_LP_DisableUSBWakeup(mxc_lp_usb_event_t wu_evt);
 
 /**
- * @brief      Enables the selected GPIO port and its selected pins to wake up the device from any low power mode.  
+ * @brief      Enables the selected GPIO port and its selected pins to wake up the device from any low power mode.
  *             Call this function multiple times to enable pins on multiple ports.  This function does not configure
  *             the GPIO pins nor does it setup their interrupt functionality.
  * @param      wu_pins      The port and pins to configure as wakeup sources.  Only the gpio and mask fields of the
@@ -330,7 +330,7 @@ void MXC_LP_DisableUSBWakeup(mxc_lp_usb_event_t wu_evt);
 void MXC_LP_EnableGPIOWakeup(mxc_gpio_cfg_t *wu_pins);
 
 /**
- * @brief      Disables the selected GPIO port and its selected pins as a wake up source.  
+ * @brief      Disables the selected GPIO port and its selected pins as a wake up source.
  *             Call this function multiple times to disable pins on multiple ports.
  * @param      wu_pins      The port and pins to disable as wakeup sources.  Only the gpio and mask fields of the
  *                          structure are used.  The func and pad fields are ignored.
@@ -338,51 +338,51 @@ void MXC_LP_EnableGPIOWakeup(mxc_gpio_cfg_t *wu_pins);
 void MXC_LP_DisableGPIOWakeup(mxc_gpio_cfg_t *wu_pins);
 
 /**
- * @brief      Enables the RTC alarm to wake up the device from any low power mode.  
+ * @brief      Enables the RTC alarm to wake up the device from any low power mode.
  */
 void MXC_LP_EnableRTCAlarmWakeup(void);
 
 /**
- * @brief      Disables the RTC alarm from waking up the device.  
+ * @brief      Disables the RTC alarm from waking up the device.
  */
 void MXC_LP_DisableRTCAlarmWakeup(void);
 
 /**
- * @brief      Places the device into SLEEP mode.  This function returns once any interrupt occurs. 
+ * @brief      Places the device into SLEEP mode.  This function returns once any interrupt occurs.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterSleepMode(void);
 
 /**
- * @brief      Places the device into BACKGROUND mode.  This function returns once any interrupt occurs. 
+ * @brief      Places the device into BACKGROUND mode.  This function returns once any interrupt occurs.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterBackgroundMode(void);
 
 /**
- * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC, USB wakeup, or external interrupt occur. 
+ * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC, USB wakeup, or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterDeepSleepMode(void);
 
 /**
- * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.  
- *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur. 
+ * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.
+ *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterBackupMode(void);
 
 /**
  * @brief      Places the USB block into its initial state where the operating current is at its minimum.
- *             This function must be called when the USB block is not used in order to achieve low power 
+ *             This function must be called when the USB block is not used in order to achieve low power
  *             current readings.
  */
 void MXC_LP_USBClearPONRST(void);

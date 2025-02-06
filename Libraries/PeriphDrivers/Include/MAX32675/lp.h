@@ -5,7 +5,7 @@
 
 /******************************************************************************
  *
- * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by 
+ * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by
  * Analog Devices, Inc.),
  * Copyright (C) 2023-2024 Analog Devices, Inc.
  *
@@ -67,16 +67,16 @@ typedef enum {
 /**
  * @brief      Places the device into SLEEP mode.  This function returns once an RTC or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterSleepMode(void);
 
 /**
  * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterDeepSleepMode(void);
 
@@ -84,8 +84,8 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterBackupMode(void);
 
@@ -93,8 +93,8 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  * @brief      Places the device into Storage mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterStorageMode(void);
 
@@ -102,18 +102,18 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  * @brief      Places the device into Shutdown mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterShutDownMode(void);
 
 /**
- * @brief      Sets the operating voltage for the device. The caller must perform the peripheral reset after 
+ * @brief      Sets the operating voltage for the device. The caller must perform the peripheral reset after
  *             calling this function.
  *
  * @param[in]  ovr   The ovr options are only 0.9V, 1.0V, and 1.1V use enum mxc_lp_ovr_t
- * 
- * @return     Success/Fail, see \ref MXC_Error_Codes for a list of return codes. 
+ *
+ * @return     Success/Fail, see \ref MXC_Error_Codes for a list of return codes.
  */
 int MXC_LP_SetOVR(mxc_lp_ovr_t ovr);
 
@@ -235,15 +235,15 @@ void MXC_LP_EnableRTCAlarmWakeup(void);
 void MXC_LP_DisableRTCAlarmWakeup(void);
 
 /**
- * @brief      Enables Timer to wakeup from any low power mode. 
- * 
+ * @brief      Enables Timer to wakeup from any low power mode.
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_EnableTimerWakeup(mxc_tmr_regs_t *tmr);
 
 /**
- * @brief      Disables Timer from waking up device.  
- * 
+ * @brief      Disables Timer from waking up device.
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_DisableTimerWakeup(mxc_tmr_regs_t *tmr);

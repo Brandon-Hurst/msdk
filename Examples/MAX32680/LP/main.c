@@ -49,6 +49,7 @@
 #include "rtc.h"
 #include "uart.h"
 #include "nvic_table.h"
+#include "mxc_delay.h"
 
 #define DELAY_IN_SEC 2
 #define USE_CONSOLE 1

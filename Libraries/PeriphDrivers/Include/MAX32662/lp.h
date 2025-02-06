@@ -5,7 +5,7 @@
 
 /******************************************************************************
  *
- * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by 
+ * Copyright (C) 2022-2023 Maxim Integrated Products, Inc. (now owned by
  * Analog Devices, Inc.),
  * Copyright (C) 2023-2024 Analog Devices, Inc.
  *
@@ -55,8 +55,8 @@ typedef enum { MXC_LP_V0_9 = 0, MXC_LP_V1_0, MXC_LP_V1_1 } mxc_lp_ovr_t;
  * @brief      Places the device into SLEEP mode.  This function returns once any interrupt occurs.
  * @note 	   MXC_LP_ClearWakeStatus should be called before this function, to avoid immediately waking up again
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterSleepMode(void);
 
@@ -64,8 +64,8 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC or external interrupt occur.
  * @note      MXC_LP_ClearWakeStatus should be called before this function, to avoid immediately waking up again
 */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterDeepSleepMode(void);
 
@@ -74,8 +74,8 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  *             Instead, the device will restart once an RTC or external interrupt occur.
  * @note       MXC_LP_ClearWakeStatus should be called before this function, to avoid immediately waking up again
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterBackupMode(void);
 
@@ -83,8 +83,8 @@ __attribute__((warning(“CAUTION: MCU shuts down debugging interface when in lo
  * @brief      Places the device into Shutdown mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur.
  */
-#ifdef DEBUG
-__attribute__((warning(“CAUTION: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#if DEBUG
+__attribute__((warning("[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets")))
 #endif
  void MXC_LP_EnterShutDownMode(void);
 
@@ -130,18 +130,18 @@ void MXC_LP_DisableSRAM0(void);
 
 /**
  * @brief      Enables power to the specified System RAM block.
- * 
+ *
  * @param[in] block The System RAM block to enable (0, 1, 2, or 3)
- * 
+ *
  * @return E_BAD_PARAM if the block specified is invalid, otherwise E_SUCCESS
  */
 int MXC_LP_EnableSRAM(int block);
 
 /**
  * @brief      Disables power to the specified System RAM block.  The contents of the RAM are destroyed.
- * 
+ *
  * @param[in] block The System RAM block to enable (0, 1, 2, or 3)
- * 
+ *
  * @return E_BAD_PARAM if the block specified is invalid, otherwise E_SUCCESS
  */
 int MXC_LP_DisableSRAM(int block);
@@ -207,14 +207,14 @@ void MXC_LP_DisableRTCAlarmWakeup(void);
 
 /**
  * @brief      Enables Timer to wakeup from any low power mode.  Only TMR3 is supported.
- * 
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_EnableTimerWakeup(mxc_tmr_regs_t *tmr);
 
 /**
  * @brief      Disables Timer from waking up device.  Only TMR3 is supported.
- * 
+ *
  * @param      tmr  Pointer to timer module.
  */
 void MXC_LP_DisableTimerWakeup(mxc_tmr_regs_t *tmr);
@@ -266,18 +266,18 @@ void MXC_LP_RomLightSleepDisable(void);
 
 /**
  * @brief      Enable Light Sleep mode for the specified System RAM instance
- * 
+ *
  * @param[in] instance The System RAM instance to enable Light Sleep mode for (0, 1, 2, or 3)
- * 
+ *
  * @return E_BAD_PARAM if the system RAM instance specified is invalid, otherwise E_SUCCESS
  */
 int MXC_LP_EnableSysRAMLightSleep(int instance);
 
 /**
  * @brief      Disable Light Sleep mode for the specified System RAM instance
- * 
+ *
  * @param[in] instance The System RAM instance to disable Light Sleep mode for (0, 1, 2, or 3)
- * 
+ *
  * @return E_BAD_PARAM if the system RAM instance specified is invalid, otherwise E_SUCCESS
  */
 int MXC_LP_DisableSysRAMLightSleep(int instance);
