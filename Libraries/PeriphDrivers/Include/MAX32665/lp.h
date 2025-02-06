@@ -360,17 +360,26 @@ void MXC_LP_SetRAMRetention(mxc_ram_retained_t ramRetained);
 /**
  * @brief      Places the device into SLEEP mode.  This function returns once any interrupt occurs. 
  */
-void MXC_LP_EnterSleepMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterSleepMode(void);
 
 /**
  * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC or external interrupt occur. 
  */
-void MXC_LP_EnterDeepSleepMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterDeepSleepMode(void);
 
 /**
  * @brief      Places the device into BACKGROUND mode.  This function returns once an RTC or external interrupt occur.
  */
-void MXC_LP_EnterBackgroundMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterBackgroundMode(void);
 
 /**
  * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.  
@@ -380,13 +389,19 @@ void MXC_LP_EnterBackgroundMode(void);
  * 			   could have no state information. It will not have a valid stack pointer. 
  * 			   This function also uses MXC_PWRSEQ->gp0 and gp1.
  */
-void MXC_LP_EnterBackupMode(void *func(void));
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterBackupMode(void *func(void));
 
 /**
  * @brief      Places the device into Shutdown mode.  CPU state is not maintained in this mode, so this function never returns.  
  *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur. 
  */
-void MXC_LP_EnterShutDownMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterShutDownMode(void);
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 

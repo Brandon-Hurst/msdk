@@ -65,30 +65,45 @@ typedef enum {
 /**
  * @brief      Places the device into SLEEP mode.  This function returns once an RTC or external interrupt occur.
  */
-void MXC_LP_EnterSleepMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterSleepMode(void);
 
 /**
  * @brief      Places the device into DEEPSLEEP mode.  This function returns once an RTC or external interrupt occur.
  */
-void MXC_LP_EnterDeepSleepMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterDeepSleepMode(void);
 
 /**
  * @brief      Places the device into BACKUP mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC or external interrupt occur.
  */
-void MXC_LP_EnterBackupMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterBackupMode(void);
 
 /**
  * @brief      Places the device into Storage mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC or external interrupt occur.
  */
-void MXC_LP_EnterStorageMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterStorageMode(void);
 
 /**
  * @brief      Places the device into Shutdown mode.  CPU state is not maintained in this mode, so this function never returns.
  *             Instead, the device will restart once an RTC, USB wakeup, or external interrupt occur.
  */
-void MXC_LP_EnterShutDownMode(void);
+#ifdef DEBUG
+__attribute__((warning(“[CAUTION]: MCU shuts down debugging interface when in low power mode. Add a delay to the start of the program or before calling this function to prevent losing debugger access after resets”)))
+#endif
+ void MXC_LP_EnterShutDownMode(void);
 
 /**
  * @brief      Set ovr bits to set the voltage the micro will run at.
